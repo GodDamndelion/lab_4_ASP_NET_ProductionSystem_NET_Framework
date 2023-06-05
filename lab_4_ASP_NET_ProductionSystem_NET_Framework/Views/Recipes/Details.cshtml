@@ -1,0 +1,87 @@
+﻿@model lab_4_ASP_NET_ProductionSystem_NET_Framework.Models.Recipe
+@*@using lab_4_ASP_NET_ProductionSystem_NET_Framework.Models*@
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <hr />
+    @foreach (var p in Model.Used_in)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                Id
+            </dt>
+
+            <dd>
+                @p.Id
+            </dd>
+
+            <dt>
+                Type_of_product_Id
+            </dt>
+
+            <dd>
+                @p.Type_of_product_Id
+            </dd>
+
+            <dt>
+                Type_of_product_name
+            </dt>
+
+            <dd>
+                @p.Type_of_product.Name
+            </dd>
+
+            <dt>
+                Quantity
+            </dt>
+
+            <dd>
+                @p.Quantity
+            </dd>
+
+            <dt>
+                Is_output
+            </dt>
+
+            <dd>
+                @p.Is_output
+            </dd>
+
+            @Html.ActionLink("Edit", "EditUse", new { id = p.Id }) |
+            @Html.ActionLink("Delete", "DeleteUse", new { id = p.Id })
+        </dl>
+    }
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Add New", "CreateUse", new { Recipe_Id = Model.Id })
+</p>
+<hr />
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
